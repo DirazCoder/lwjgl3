@@ -16,9 +16,9 @@ if [ "$SKIP_LIBFFI" != "1" ]; then
   fi
   cd libffi
 
-  # Patch generator to produce iOS arm64 only
+  # Patch generator to produce iOS device arm64 only (3.8.0 config.sub rejects the simulator triples)
   sed -i'.bak' \
-      -e '/\(64_platform\)/! s/build_target(ios_/#build_target(ios_/g' \
+      -e '/ios_device_arm64_platform/! s/build_target(ios_/#build_target(ios_/g' \
       generate-darwin-source-and-headers.py
 
   # Generate configure file
