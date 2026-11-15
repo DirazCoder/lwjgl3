@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-export LIBFFI_VERSION=3.4.6  # TODO: upstream 3.4.3 bundles libffi 3.8.0, check bindings match
+export LIBFFI_VERSION=3.8.0
 export LWJGL_BUILD_OFFLINE=1
 export LWJGL_BUILD_ARCH=arm64
 
