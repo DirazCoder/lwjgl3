@@ -46,6 +46,8 @@ mv $LWJGL_NATIVE/shaderc/libshaderc_shared.dylib $LWJGL_NATIVE/shaderc/libshader
 # HACK: Skip compiling and running the generator to save time and keep LWJGLX functions
 mkdir -p bin/classes/{generator,templates/META-INF}
 touch bin/classes/{generator,templates}/touch.txt bin/classes/generator/generated-touch.txt
+# skip downloading prebuilt macOS natives (SDL, openal, etc), useless on iOS. Amethyst ships its own
+touch bin/libs/native/macos/$LWJGL_BUILD_ARCH/touch.txt
 
 # Build LWJGL 3
 ant -version
@@ -84,7 +86,7 @@ yes | ant -Dplatform.macos=true \
   -Dbinding.xxhash=false \
   -Dbinding.yoga=false \
   -Dbinding.zstd=false \
-  -Dbuild.type=release/3.3.3 \
+  -Dbuild.type=release/3.4.3 \
   -Djavadoc.skip=true \
   -Dnashorn.args="--no-deprecation-warning" \
   compile compile-native release
